@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthContext/AuthContext';
 import logo from '../asset/logo.png'
+import { FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
     return (
       <div>
         <div className="navbar bg-base-100">
@@ -24,8 +25,7 @@ const Navbar = () => {
                     strokeWidth="2"
                     d="M4 6h16M4 12h8m-8 6h16"
                   />
-                            </svg>
-                            
+                </svg>
               </label>
               <ul
                 tabIndex={0}
@@ -60,10 +60,14 @@ const Navbar = () => {
                   <a>Item 3</a>
                 </li>
               </ul>
-                    </div>
-                    <img className='w-14 rounded-full' src={logo} alt="" />
-                    <Link to='/'
-                        className="btn btn-ghost normal-case font-bold text-3xl">FOCUS</Link>
+            </div>
+            <img className="w-14 rounded-full" src={logo} alt="" />
+            <Link
+              to="/"
+              className="btn btn-ghost normal-case font-bold text-3xl"
+            >
+              FOCUS
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
@@ -98,7 +102,47 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link to='login' className='btn btn-accent '>Sign Up</Link>
+            {user?.uid ? (
+              <>
+                <div
+                  data-tip={user?.displayName}
+                  className="w-16 tooltip tooltip-left mr-3 rounded-full"
+                >
+                  {/* <div className="dropdown dropdown-bottom dropdown-end mr-5">
+                    <label
+                      tabIndex={0}
+                      className="btn border-white bg-slate-400 hover:bg-white text-slate-900"
+                    >
+                      <FaUserCircle></FaUserCircle>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                        <Link to="/myreviews">My Reviews</Link>
+                      </li>
+                      <li>
+                        <Link to="/addservice">Add Service</Link>
+                      </li>
+                    </ul>
+                  </div> */}
+                </div>
+                <button onClick={logOut} className="btn btn-outline">
+                  <FaSignOutAlt></FaSignOutAlt>
+                  <span className="w-9 md:w-20 ">Sign out</span>{" "}
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="text-white mx-5">
+                  <span>{user?.email}</span>
+                </div>
+                <Link to="/login" className="btn btn-active ">
+                Log in
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
