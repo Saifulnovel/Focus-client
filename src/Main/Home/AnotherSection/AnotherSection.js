@@ -13,11 +13,7 @@ const AnotherSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="card justify-center text-center  ">
-              {/* <img
-                className="w-3/2 container mx-auto"
-                src={gather}
-                alt="Shoes"
-              /> */}
+             
                         
               <div className="card-body">
                 <h2 className="card-title text-4xl  justify-center">
@@ -26,20 +22,14 @@ const AnotherSection = () => {
                   </span>
                   Get Quote
                 </h2>
-                {/* <div className="badge text-green-700 badge-secondary">
-                  Step 1
-                </div> */}
+              
                 <p className="text-xs">
                   Select Your Device and We will set perfect price for you.{" "}
                 </p>
               </div>
             </div>
             <div className="card  ">
-              {/* <img
-                className="w-1/2 container mx-auto"
-                src={verify}
-                alt="Shoes"
-              /> */}
+              
               <div className="card-body">
                 <h2 className="card-title text-4xl  justify-center">
                   <span className="bg-orange-400 text-white btn-circle p-auto">
@@ -47,9 +37,7 @@ const AnotherSection = () => {
                   </span>
                   Schedule Pick Up
                 </h2>
-                {/* <div className="badge text-green-700 badge-secondary">
-                  Step 2
-                </div> */}
+               
                 <p className="text-xs">
                   Schedule a free pick up for your device from your home or work
                   at a time slot that best suits your convenience.
@@ -57,11 +45,7 @@ const AnotherSection = () => {
               </div>
             </div>
             <div className="card  ">
-              {/* <img
-                className="w-1/2 container mx-auto"
-                src={buysell}
-                alt="Shoes"
-              /> */}
+              
               <div className="card-body">
                 <h2 className="card-title text-4xl justify-center">
                   <span className="bg-orange-400 text-white btn-circle p-auto">
@@ -69,9 +53,7 @@ const AnotherSection = () => {
                   </span>
                   Get Paid
                 </h2>
-                {/* <div className="badge text-green-700 badge-secondary">
-                  Step 3
-                </div> */}
+                
                 <p className="text-xs">
                   Get instant payment at the time of pickup. We Provide Cash ,
                   Account transfer, Paytm, Googlepay, Upi immediately.

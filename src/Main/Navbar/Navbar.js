@@ -57,7 +57,7 @@ const Navbar = () => {
                   </ul>
                 </li>
                 <li>
-                  <a>Item 3</a>
+                  <Link to="/blog">Blogs</Link>
                 </li>
               </ul>
             </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to="/blog">Blogs</Link>
               </li>
             </ul>
           </div>
@@ -106,7 +106,7 @@ const Navbar = () => {
               <>
                 <div
                   data-tip={user?.displayName}
-                  className="w-16 tooltip tooltip-left mr-3 rounded-full"
+                  className="w-16 tooltip tooltip-left mr-9 rounded-full"
                 >
                   {/* <div className="dropdown dropdown-bottom dropdown-end mr-5">
                     <label
@@ -127,6 +127,16 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </div> */}
+                  <ul className="mr-5">
+                    <li>
+                      <Link
+                        to="/dashboard"
+                        className="text-cyan-700 font-extrabold"
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
                 <button onClick={logOut} className="btn btn-outline">
                   <FaSignOutAlt></FaSignOutAlt>
@@ -139,7 +149,7 @@ const Navbar = () => {
                   <span>{user?.email}</span>
                 </div>
                 <Link to="/login" className="btn btn-active ">
-                Log in
+                  Log in
                 </Link>
               </>
             )}
