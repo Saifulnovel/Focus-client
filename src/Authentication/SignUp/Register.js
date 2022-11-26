@@ -1,39 +1,75 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { setAuthToken } from "../Auth/Auth";
 
 
 const Register = () => {
-    const { signUp } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const { signUp, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  const [signUpError, setSignUpError] = useState('')
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-    const onSubmit = (data, event) => {
+
+
+  const onSubmit = (data) => {
+      setSignUpError('')
       
         signUp(data.email, data.password)
         .then(result => {
-            const user = result.user;
-            navigate('/');
+          const user = result.user;
+          toast("User sign up succesfully")
+          setAuthToken(user);
+          const userInfo = {
+            displayName: data.name,
+          };
+          
+          console.log(userInfo);
+          updateUser(userInfo)
+            .then(() => {
+              // saveUser();
+             
+            })
+            .catch(err => {
+              console.log(err)
+              setSignUpError(errors.message)
+            })
+          
+          
+
+          
         
       })
       .catch((error) => console.log(error));
   };
+  // const saveUser = (name, email) => {
+  //   const user = { name, email }
+  //   console.log(user)
+  //   fetch("http://localhost:5000/users", {
+  //     method: "POST",
+  //     headers: {
+  //       'content-type': 'application/json'
+
+  //     },
+  //     body: JSON.stringify(user)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       navigate("/");
+  //     })
+  // }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
-          {/* <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">SignUp</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-          </div> */}
+          
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="mt-5">
               <h1 className="text-4xl font-serif font-bold text-primary">
@@ -42,6 +78,18 @@ const Register = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    name="name"
+                    {...register("name", { required: true })}
+                    className="input input-bordered bg-blue-100"
+                  />
+                </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -77,6 +125,7 @@ const Register = () => {
                 </div>
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Register Now</button>
+                  {signUpError && <p className="text-red-600">{ signUpError}</p>}
                 </div>
                 <div>
                   <p>
