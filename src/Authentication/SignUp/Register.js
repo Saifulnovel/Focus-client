@@ -20,21 +20,21 @@ const Register = () => {
 
   const onSubmit = (data) => {
       setSignUpError('')
-      
+      console.log(data);
         signUp(data.email, data.password)
         .then(result => {
           const user = result.user;
           toast("User sign up succesfully")
-          setAuthToken(user);
+          setAuthToken(data);
           const userInfo = {
             displayName: data.name,
           };
           
-          console.log(userInfo);
+          
           updateUser(userInfo)
             .then(() => {
               // saveUser();
-             
+             navigate("/");
             })
             .catch(err => {
               console.log(err)
@@ -69,7 +69,6 @@ const Register = () => {
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
-          
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div className="mt-5">
               <h1 className="text-4xl font-serif font-bold text-primary">
@@ -102,6 +101,18 @@ const Register = () => {
                     className="input input-bordered bg-blue-100"
                   />
                 </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Choose account type</span>
+                  </label>
+                  <select
+                    {...register("role", { required: true })}
+                    className="select select-bordered"
+                  >
+                    <option selected>Buyer</option>
+                    <option>Seller</option>
+                  </select>
+                </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
@@ -121,11 +132,10 @@ const Register = () => {
                       Password should be at least 6 character{" "}
                     </p>
                   )}
-                  
                 </div>
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Register Now</button>
-                  {signUpError && <p className="text-red-600">{ signUpError}</p>}
+                  {signUpError && <p className="text-red-600">{signUpError}</p>}
                 </div>
                 <div>
                   <p>

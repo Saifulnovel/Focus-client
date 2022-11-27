@@ -1,6 +1,8 @@
 export const setAuthToken = user => {
     const currentUser = {
-        email:user.email,
+        email: user.email,
+        name: user.name,
+        role: user.role,
     }
 
 // send user to db

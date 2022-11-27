@@ -6,6 +6,7 @@ import ErrorPage from "../../Main/ErrorPage/ErrorPage";
 import Blog from "../../Main/Home/Blog/Blog";
 import Home from "../../Main/Home/Home";
 import Main from "../../Main/Main/Main";
+import Category from "../../Main/Pages/Category/Category";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 const routes = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const routes = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/category/:id",
+        element: <Category></Category>,
+        loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
       },
     ],
   },

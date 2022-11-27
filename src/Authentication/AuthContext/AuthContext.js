@@ -25,10 +25,8 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const updateUser = (userInfo) => {
-
-    console.log(userInfo)
     setLoading(true);
-    return updateProfile( userInfo);
+    return updateProfile(auth.currentUser, userInfo);
   };
   const logOut = () => {
     setLoading(true);
