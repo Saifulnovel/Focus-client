@@ -59,12 +59,20 @@ const Navbar = () => {
                 <li>
                   <Link to="/blog">Blogs</Link>
                 </li>
+                {user?.uid && (
+                  <Link
+                    to="/dashboard"
+                    className="text-cyan-700 font-extrabold"
+                  >
+                    Dashboard
+                  </Link>
+                )}
               </ul>
             </div>
-            <img className="w-14 rounded-full" src={logo} alt="" />
+            <img className="w-6 md:w-14 rounded-full" src={logo} alt="" />
             <Link
               to="/"
-              className="btn btn-ghost normal-case font-bold text-3xl"
+              className="btn btn-ghost normal-case font-bold text-xl md:text-3xl"
             >
               FOCUS
             </Link>
@@ -102,31 +110,29 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end">
+            <label
+              htmlFor="dashboard-drawer"
+              tabIndex={1}
+              className="btn btn-ghost mr-4 lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
             {user?.uid ? (
               <>
-                <div
-                  data-tip={user?.displayName}
-                  className="w-16 tooltip tooltip-left mr-9 rounded-full"
-                >
-                  {/* <div className="dropdown dropdown-bottom dropdown-end mr-5">
-                    <label
-                      tabIndex={0}
-                      className="btn border-white bg-slate-400 hover:bg-white text-slate-900"
-                    >
-                      <FaUserCircle></FaUserCircle>
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-                    >
-                      <li>
-                        <Link to="/myreviews">My Reviews</Link>
-                      </li>
-                      <li>
-                        <Link to="/addservice">Add Service</Link>
-                      </li>
-                    </ul>
-                  </div> */}
+                <div className="w-16  mr-9 rounded-full hidden md:flex">
                   <ul className="mr-5">
                     <li>
                       <Link
@@ -138,9 +144,11 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </div>
-                <button onClick={logOut} className="btn btn-outline">
+                <button onClick={logOut} className="btn btn-outline  ">
                   <FaSignOutAlt></FaSignOutAlt>
-                  <span className="w-9 md:w-20 ">Sign out</span>{" "}
+                  <span className="w-9 md:w-20 hidden md:flex ">
+                    Sign out
+                  </span>{" "}
                 </button>
               </>
             ) : (
