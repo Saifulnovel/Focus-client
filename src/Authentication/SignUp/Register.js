@@ -3,20 +3,39 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../AuthContext/AuthContext";
-import { setAuthToken } from "../Auth/Auth";
+import { setAuthToken } from "../../Hooks/Auth/Auth";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../Hooks/useToken";
 
 
 const Register = () => {
-    const { signUp, updateUser } = useContext(AuthContext);
+    const { signUp, updateUser, providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
   
   const [signUpError, setSignUpError] = useState('')
+  const [createdUserEmail, setCreatedUserEmail] =useState('')
+  const [token] = useToken(createdUserEmail)
+
+  if (token) {
+    navigate('/');
+   }
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+   const handleGoogleSignin = () => {
+     providerLogin(googleProvider)
+       .then((result) => {
+         const user = result.user;
+         console.log(user);
+         navigate("/");
+       })
+       .catch((error) => console.error(error));
+   };
 
   const onSubmit = (data) => {
       setSignUpError('')
@@ -34,7 +53,8 @@ const Register = () => {
           updateUser(userInfo)
             .then(() => {
               // saveUser();
-             navigate("/");
+              setCreatedUserEmail(data.email)
+             
             })
             .catch(err => {
               console.log(err)
@@ -48,6 +68,10 @@ const Register = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  const getUserToken = email => {
+   
+  }
   // const saveUser = (name, email) => {
   //   const user = { name, email }
   //   console.log(user)
@@ -146,6 +170,12 @@ const Register = () => {
                   </p>
                 </div>
               </div>
+              <button
+                onClick={handleGoogleSignin}
+                className="btn btn-outline mb-2  btn-warning "
+              >
+                <FaGoogle className="mr-5 text-2xl " /> Sign in With Google{" "}
+              </button>
             </form>
           </div>
         </div>

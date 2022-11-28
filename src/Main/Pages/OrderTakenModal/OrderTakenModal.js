@@ -12,14 +12,15 @@ const OrderTakenModal = ({ order, setOrder }) => {
         const form = e.target;
         const buyerName = form.name.value;
         const phone = form.phone.value;
-        const email = form.email.value;
+      const email = form.email.value;
+      const location = form.location.value;
        
          
 
 
         const bookings = {
             itemId: _id,
-            buyer: buyerName,email, phone,  price, sellerName, name
+            buyer: buyerName,email, phone,  price, sellerName, name, location
         }
 
         fetch('http://localhost:5000/orders', {
@@ -95,6 +96,15 @@ const OrderTakenModal = ({ order, setOrder }) => {
                     type="text"
                     placeholder="number"
                     name="phone"
+                    className="input input-bordered input-accent"
+                  />
+                </label>
+                <label className="input-group input-group-vertical mb-7">
+                  <span>Meeting Location</span>
+                  <input
+                    type="text"
+                    placeholder="Where wants to collect"
+                    name="location"
                     className="input input-bordered input-accent"
                   />
                 </label>
