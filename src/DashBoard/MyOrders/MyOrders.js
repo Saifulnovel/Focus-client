@@ -43,7 +43,7 @@ const MyOrders = () => {
               {myorders.map((orders, i) => (
                 <tr key={orders._id} className="hover">
                       <th>{i+1  }</th>
-                      <td>{orders.sellerName}</td>
+                      <td>{user?.displayName}</td>
                       <td>{ orders.name}</td>
                       <td>{ orders.price}$</td>
                       <td>{ orders.phone}</td>

@@ -7,12 +7,14 @@ import { setAuthToken } from "../../Hooks/Auth/Auth";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../Hooks/useToken";
+import useTitle from "../../Hooks/useTitle/useTitle";
 
 
 const Register = () => {
     const { signUp, updateUser, providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
+  useTitle('Registration')
   
   const [signUpError, setSignUpError] = useState('')
   const [createdUserEmail, setCreatedUserEmail] =useState('')
@@ -31,8 +33,16 @@ const Register = () => {
      providerLogin(googleProvider)
        .then((result) => {
          const user = result.user;
+         const {displayName, email } = user;
+         const users = {
+           name: displayName,
+           email,
+           role: 'Buyer'
+
+         }
+         setAuthToken(users)
          console.log(user);
-         navigate("/");
+         
        })
        .catch((error) => console.error(error));
    };
@@ -54,7 +64,9 @@ const Register = () => {
             .then(() => {
               // saveUser();
               setCreatedUserEmail(data.email)
-             
+            //  getUserToken(user.email)
+              
+              
             })
             .catch(err => {
               console.log(err)
@@ -69,9 +81,16 @@ const Register = () => {
       .catch((error) => console.log(error));
   };
 
-  const getUserToken = email => {
-   
-  }
+  // const getUserToken = email => {
+  //   fetch(`http://localhost:5000/jwt?email=${email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.accessToken) {
+  //         localStorage.setItem("accessToken", data.accessToken);
+  //         navigate("/");
+  //       }
+  //     });
+  // }
   // const saveUser = (name, email) => {
   //   const user = { name, email }
   //   console.log(user)
