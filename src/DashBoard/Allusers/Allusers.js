@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { Result } from 'postcss';
+
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle/useTitle';
 
 const Allusers = () => {
+  useTitle("All Users")
     const {data: users =[], refetch} = useQuery({
       queryKey: ["users"],
         queryFn: async () => {
@@ -12,6 +14,7 @@ const Allusers = () => {
             return data;
         }
     });
+  
 
     const handleMakeAdmin = id => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
