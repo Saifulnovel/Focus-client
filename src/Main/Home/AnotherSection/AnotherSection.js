@@ -7,7 +7,7 @@ const AnotherSection = () => {
         <div className="container my-44">
           <div className="mb-28 ">
             <h2 className="text-6xl font-serif font-thin mb-[-30px] text-green-600 font-semibold ">
-              How Focus works !!
+              How Focus works !! 
             </h2>
           </div>
 
@@ -20,7 +20,7 @@ const AnotherSection = () => {
                   <span className="bg-orange-400 btn-circle text-white p-auto">
                     1
                   </span>
-                  Get Quote
+                  Get Prefering Products
                 </h2>
               
                 <p className="text-xs">
