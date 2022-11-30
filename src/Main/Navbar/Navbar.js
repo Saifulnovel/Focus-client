@@ -32,9 +32,11 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Item 1</a>
+                  <Link to="/" className="font-extrabold text-slate-600">
+                    Home
+                  </Link>
                 </li>
-                <li tabIndex={0}>
+                {/* <li tabIndex={0}>
                   <a className="justify-between">
                     Parent
                     <svg
@@ -55,9 +57,11 @@ const Navbar = () => {
                       <a>Submenu 2</a>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 <li>
-                  <Link to="/blog">Blogs</Link>
+                  <Link to="/blog" className="font-extrabold text-slate-600">
+                    Blogs
+                  </Link>
                 </li>
                 {user?.uid && (
                   <Link
@@ -80,9 +84,11 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
               <li>
-                <a>Item 1</a>
+                <Link to="/" className="font-extrabold text-slate-600">
+                  Home
+                </Link>
               </li>
-              <li tabIndex={0}>
+              {/* <li tabIndex={0}>
                 <a>
                   Parent
                   <svg
@@ -103,9 +109,11 @@ const Navbar = () => {
                     <a>Submenu 2</a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               <li>
-                <Link to="/blog">Blogs</Link>
+                <Link to="/blog" className="font-extrabold text-slate-600">
+                  Blogs
+                </Link>
               </li>
             </ul>
           </div>
