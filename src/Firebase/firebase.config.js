@@ -5,6 +5,10 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+
+// tried 100+ times but api key wont work while its been rendering from env File, so that it is use as previous
+
 const firebaseConfig = {
   apiKey: "AIzaSyCz2WJwlLeS5z2K07XXiw5i60PE17rNUxI",
   authDomain: process.env.REACT_APP_authDomain,
