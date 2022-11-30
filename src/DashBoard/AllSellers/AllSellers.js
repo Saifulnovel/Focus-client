@@ -13,7 +13,7 @@ const AllSellers = () => {
        setDeleteUser(null);
      };
 
-    const url = `http://localhost:5000/users/sellers?role=seller`
+    const url = ` https://camera-resell-server.vercel.app/users/sellers?role=seller`;
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
@@ -28,7 +28,7 @@ const AllSellers = () => {
         }
     })
     const handleVerifySeller = (id) => {
-        const url = `http://localhost:5000/users/verify/${id}`
+        const url = ` https://camera-resell-server.vercel.app/users/verify/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -45,7 +45,7 @@ const AllSellers = () => {
         
     }
      const handleDelete = (user) => {
-       const url = `http://localhost:5000/users/${user._id}`;
+       const url = ` https://camera-resell-server.vercel.app/users/${user._id}`;
 
        fetch(url, {
          method: "DELETE",

@@ -8,6 +8,7 @@ import Allusers from "../../DashBoard/Allusers/Allusers";
 
 import DashboardLayout from "../../DashBoard/DashboardLayout/DashboardLayout";
 import MyOrders from "../../DashBoard/MyOrders/MyOrders";
+import MyProducts from "../../DashBoard/MyProducts/MyProducts";
 import ErrorPage from "../../Main/ErrorPage/ErrorPage";
 import Blog from "../../Main/Home/Blog/Blog";
 import Home from "../../Main/Home/Home";
@@ -40,7 +41,9 @@ const routes = createBrowserRouter([
         path: "/category/:id",
         element: <CategoryPage></CategoryPage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(
+            ` https://camera-resell-server.vercel.app/category/${params.id}`
+          ),
       },
     ],
   },
@@ -75,7 +78,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/dashboard/buyers",
-        element:<AllBuyers/>
+        element: <AllBuyers />,
+      },
+      {
+        path: "dashboard/myproducts",
+        element: <MyProducts></MyProducts>,
       },
     ],
   },

@@ -5,7 +5,7 @@ const useSeller = (email) => {
   const [isSellerLoading, setIsSellerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/sellers`)
+      fetch(` https://camera-resell-server.vercel.app/users/sellers`)
         .then((res) => res.json())
         .then((data) => {
           setIsSeller(data.isSeller);

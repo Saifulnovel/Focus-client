@@ -5,27 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Authentication/AuthContext/AuthContext";
 import useTitle from "../../Hooks/useTitle/useTitle";
 
-
 const AddProducts = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
-  useTitle('AddProducts')
+  const navigate = useNavigate();
+  useTitle("AddProducts");
   const imgKey = `a23314678e70cf4f7a8c05f68caa3ef3`;
 
   // console.log(imgKey);
-  
+
   const { register, handleSubmit } = useForm();
 
-    const handlePostSubmit = (data) => {
-      
-       
-        
-      const image =
-        data.img[0];
-    
-   
- 
-      
+  const handlePostSubmit = (data) => {
+    const image = data.img[0];
+
     const formData = new FormData();
     formData.append("image", image);
     // console.log(formData.get('image'));
@@ -38,22 +30,22 @@ const AddProducts = () => {
       .then((imgInfo) => {
         if (imgInfo.success) {
           const picture = imgInfo.data.url;
-        const productsquery = {
-          name: data.itemName,
-          originalPrice: data.originalPrice,
-          sellerName: user?.displayName,
-          price: data.price,
-          email: user?.email,
-          location: data.location,
-          used: data.period,
-          condition: data.condition,
-          categoryId: data.categoryId,
-          // categoryName: idToName(categoryId),
-          picture,
-          // console.log(picture);
+          const productsquery = {
+            name: data.itemName,
+            originalPrice: data.originalPrice,
+            sellerName: user?.displayName,
+            price: data.price,
+            email: user?.email,
+            location: data.location,
+            used: data.period,
+            condition: data.condition,
+            categoryId: data.categoryId,
+            // categoryName: idToName(categoryId),
+            picture,
+            // console.log(picture);
           };
           console.log(productsquery.picture);
-          fetch(`http://localhost:5000/products`, {
+          fetch(` https://camera-resell-server.vercel.app/products`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -63,13 +55,11 @@ const AddProducts = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              toast("Products added succesfully")
+              toast("Products added succesfully");
               navigate(`/category/${productsquery.categoryId}`);
             });
         }
       });
-
-    
   };
   // categoryId to categoryName
   const idToName = (id) => {
