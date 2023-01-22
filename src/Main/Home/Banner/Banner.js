@@ -12,7 +12,7 @@ const Banner = () => {
         >
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-white ">
-            <div className="">
+            <div   className="">
               <h1 className="mb-5 text-6xl antialiased hover:subpixel-antialiased font-semibold font-mono">
                 Pre-Owend Cameras
               </h1>

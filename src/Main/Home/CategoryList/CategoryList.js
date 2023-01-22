@@ -14,7 +14,13 @@ const CategoryList = () => {
   return (
     <div className=" grid grid-cols-1 lg:grid-cols-3 gap-10  justify-center  bg-slate-100 p-9 my-28 ">
       {data.map((category) => (
-        <div key={category._id} className="relative">
+        <div
+          key={category._id}
+          className="relative"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-duration="1000"
+        >
           {" "}
           <div className="card  mx-auto h-60 bg-sky-100 glass shadow-2xl hover:shadow-inner">
             <div className="card-body  ">
