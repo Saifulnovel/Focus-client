@@ -1,5 +1,6 @@
 import React from 'react';
-import img from  '../../asset/ex.jpg'
+import img from '../../asset/ex.jpg'
+
 
 const ExtraSession = () => {
     return (
@@ -22,6 +23,8 @@ const ExtraSession = () => {
                 gear.
               </p>
               <button className="btn btn-info">Get More Ideas</button>
+
+            
             </div>
           </div>
         </div>

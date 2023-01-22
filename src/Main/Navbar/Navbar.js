@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthContext/AuthContext';
-import logo from '../asset/logo.png'
+// import logo from '../asset/logo.png'
 import { FaSignOutAlt } from "react-icons/fa";
+import Lottie from "lottie-react";
+import car from "../asset/60265-digital-camera.json";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -73,7 +75,8 @@ const Navbar = () => {
                 )}
               </ul>
             </div>
-            <img className="w-6 md:w-14 rounded-full" src={logo} alt="" />
+            {/* <img className="w-6 md:w-14 rounded-full" src={logo} alt="" /> */}
+            <Lottie animationData={car} loop={true} className="w-14 rounded-full " />
             <Link
               to="/"
               className="btn btn-ghost normal-case font-bold text-xl md:text-3xl"
