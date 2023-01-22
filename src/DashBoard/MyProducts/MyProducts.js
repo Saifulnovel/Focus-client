@@ -1,18 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 
-
-
 import { AuthContext } from "../../Authentication/AuthContext/AuthContext";
 import useTitle from "../../Hooks/useTitle/useTitle";
 import MyProductCard from "./MyProductsCard/MyProductsCard";
 
-
-
 const MyProducts = () => {
   useTitle("My Products");
   const { user } = useContext(AuthContext);
-  const url = ` https://camera-resell-server.vercel.app/product?email=${user?.email}`;
+  const url = ` http://localhost:5000/product?email=${user?.email}`;
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
@@ -26,7 +22,6 @@ const MyProducts = () => {
       return data;
     },
   });
-  
 
   return (
     <div>

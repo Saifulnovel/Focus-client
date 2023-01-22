@@ -7,7 +7,7 @@ export const setAuthToken = (user) => {
 
   // send user to db
 
-  fetch(` https://camera-resell-server.vercel.app/user/${user?.email}`, {
+  fetch(` http://localhost:5000/user/${user?.email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",

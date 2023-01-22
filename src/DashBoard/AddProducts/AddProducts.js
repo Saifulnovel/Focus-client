@@ -45,7 +45,7 @@ const AddProducts = () => {
             // console.log(picture);
           };
           console.log(productsquery.picture);
-          fetch(` https://camera-resell-server.vercel.app/products`, {
+          fetch(` http://localhost:5000/products`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -3,9 +3,8 @@ import toast from "react-hot-toast";
 
 // Advertise Product Card
 const ProductCard = ({ singleProduct, refetch }) => {
-    console.log(singleProduct);
+  console.log(singleProduct);
   const {
-    
     location,
     name,
     originalPrice,
@@ -18,7 +17,7 @@ const ProductCard = ({ singleProduct, refetch }) => {
   } = singleProduct;
 
   const handleDelete = (id) => {
-    const url = ` https://camera-resell-server.vercel.app/seller/advertise/${id}`;
+    const url = ` http://localhost:5000/seller/advertise/${id}`;
     console.log(id);
     fetch(url, {
       method: "DELETE",

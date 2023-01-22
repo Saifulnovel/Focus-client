@@ -25,7 +25,7 @@ const OrderTakenModal = ({ order, setOrder }) => {
       location,
     };
 
-    fetch(" https://camera-resell-server.vercel.app/orders", {
+    fetch(" http://localhost:5000/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

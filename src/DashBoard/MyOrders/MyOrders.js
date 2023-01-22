@@ -1,4 +1,4 @@
-import {  useQuery } from '@tanstack/react-query';
+import {useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Authentication/AuthContext/AuthContext';
 import useTitle from '../../Hooks/useTitle/useTitle';
@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext)
     
 
-    const url = `https://camera-resell-server.vercel.app/myorders?email=${user?.email}`;
+    const url = `http://localhost:5000/myorders?email=${user?.email}`;
 
     const {data: myorders =[] } = useQuery({
         queryKey: ['myorders', user?.email],

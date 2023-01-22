@@ -6,13 +6,21 @@ const Banner = () => {
       <div>
         <div
           className="hero min-h-screen"
+          data-aos="zoom-in"
+          data-aos-easing="linear"
+          data-aos-duration="1000"
           style={{
             backgroundImage: `url(${banner})`,
           }}
         >
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-white ">
-            <div   className="">
+            <div
+              className=""
+              data-aos="fade-right"
+              data-aos-easing="linear"
+              data-aos-duration="1000"
+            >
               <h1 className="mb-5 text-6xl antialiased hover:subpixel-antialiased font-semibold font-mono">
                 Pre-Owend Cameras
               </h1>

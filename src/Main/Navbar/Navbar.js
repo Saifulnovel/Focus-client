@@ -121,7 +121,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <label
+            {/* <label
               htmlFor="dashboard-drawer"
               tabIndex={1}
               className="btn btn-ghost mr-4 lg:hidden"
@@ -140,7 +140,7 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </label>
+            </label> */}
             {user?.uid ? (
               <>
                 <div className="w-16  mr-9 rounded-full hidden md:flex">

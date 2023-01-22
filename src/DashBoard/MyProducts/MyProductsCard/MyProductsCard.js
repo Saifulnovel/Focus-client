@@ -6,7 +6,7 @@ const MyProductCard = ({ product, i }) => {
 
   const saveAdvertisedProduct = (product) => {
     // console.log(product);
-    fetch(" https://camera-resell-server.vercel.app/seller/advertise", {
+    fetch(" http://localhost:5000/seller/advertise", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

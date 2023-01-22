@@ -12,7 +12,7 @@ const AllBuyers = () => {
     setDeleteUser(null);
   };
 
-  const url = ` https://camera-resell-server.vercel.app/users/buyers?role=buyer`;
+  const url = ` http://localhost:5000/users/buyers?role=buyer`;
   const {
     data: buyers = [],
     refetch,
@@ -32,7 +32,7 @@ const AllBuyers = () => {
   });
 
   const handleDelete = (buyer) => {
-    const url = ` https://camera-resell-server.vercel.app/users/${buyer._id}`;
+    const url = ` http://localhost:5000/users/${buyer._id}`;
 
     fetch(url, {
       method: "DELETE",

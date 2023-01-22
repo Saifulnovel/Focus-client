@@ -41,9 +41,7 @@ const routes = createBrowserRouter([
         path: "/category/:id",
         element: <CategoryPage></CategoryPage>,
         loader: ({ params }) =>
-          fetch(
-            ` https://camera-resell-server.vercel.app/category/${params.id}`
-          ),
+          fetch(` http://localhost:5000/category/${params.id}`),
       },
     ],
   },

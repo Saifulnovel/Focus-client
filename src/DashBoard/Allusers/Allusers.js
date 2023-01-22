@@ -14,14 +14,14 @@ const Allusers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch(" https://camera-resell-server.vercel.app/users");
+      const res = await fetch(" http://localhost:5000/users");
       const data = await res.json();
       return data;
     },
   });
 
   const handleMakeAdmin = (id) => {
-    fetch(` https://camera-resell-server.vercel.app/users/admin/${id}`, {
+    fetch(` http://localhost:5000/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -36,7 +36,7 @@ const Allusers = () => {
       });
   };
   const handleDelete = (user) => {
-    const url = ` https://camera-resell-server.vercel.app/users/${user._id}`;
+    const url = ` http://localhost:5000/users/${user._id}`;
 
     fetch(url, {
       method: "DELETE",

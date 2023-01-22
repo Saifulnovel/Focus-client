@@ -6,9 +6,7 @@ const CategoryList = () => {
   const { data = [] } = useQuery({
     queryKey: ["data"],
     queryFn: () =>
-      fetch(` https://camera-resell-server.vercel.app/category`).then((res) =>
-        res.json()
-      ),
+      fetch(` http://localhost:5000/category`).then((res) => res.json()),
   });
   console.log(data);
   return (

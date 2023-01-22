@@ -3,9 +3,8 @@ import React from "react";
 
 import ProductCard from "../ProductsCard/ProductsCard";
 
-
 const Advertise = () => {
-  const url = ` https://camera-resell-server.vercel.app/seller/advertise`;
+  const url = ` http://localhost:5000/seller/advertise`;
 
   const {
     data = [],
@@ -16,22 +15,21 @@ const Advertise = () => {
     queryFn: async () => {
       const res = await fetch(url);
       const data = await res.json();
-      
+
       return data;
-      },
-   
+    },
   });
-    if (isLoading) {
-        <progress className="progress w-56"></progress>;
-    }
-  
+  if (isLoading) {
+    <progress className="progress w-56"></progress>;
+  }
+
   // console.log(data);
   return (
     <>
       {data.length > 0 && (
         <div className="my-10">
           <h3 className="text-3xl text-green-500 font-bold mb-5">
-            Advertised  Product
+            Advertised Product
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {data.map((singleProduct) => (
